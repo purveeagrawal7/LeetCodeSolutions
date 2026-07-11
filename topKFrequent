@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function(nums, k) {
+    let sortedMap = {};
+    let resultArr = [];
+    for(let i=0;i<nums.length;i++){
+        if(nums[i] in sortedMap){
+            sortedMap[nums[i]] = sortedMap[nums[i]] + 1;
+        }
+        else{
+            sortedMap[nums[i]] = 1;
+        }
+    }
+    const result = Object.entries(sortedMap).sort((a,b)=>b[1]-a[1])
+    for(let i=0;i<k;i++){
+        resultArr.push(Number(result[i][0]))
+        
+    }
+    return resultArr;
+}
