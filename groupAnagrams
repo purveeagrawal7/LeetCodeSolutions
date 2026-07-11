@@ -1,0 +1,30 @@
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function(strs) {
+    let groupedAnagrams= [];
+    let tempMap = {};
+    if(strs.length==0){
+        return [[""]]
+    }
+    for(let i=0;i<strs.length;i++){
+        let sortedStr = strs[i].split("").sort().join("");
+        if(tempMap.hasOwnProperty(sortedStr)){
+            tempMap[sortedStr].push(i);
+        }
+        else{
+            tempMap[sortedStr] = [i]
+        }
+    }
+    Object.values(tempMap).forEach((value)=>{
+        if(value.length > 0){
+            let tempArray = [];
+            for(let i=0;i<value.length;i++){
+                tempArray.push(strs[value[i]]);
+            }
+            groupedAnagrams.push(tempArray)
+        }
+    })
+    return groupedAnagrams;
+};
