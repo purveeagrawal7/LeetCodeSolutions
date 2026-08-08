@@ -1,11 +1,16 @@
-class Solution {
-    public String removeDuplicates(String s, int k) {
-    int tempArray = new int[s.length];
-    String result = "";
-    for(int i=0;i<s.length;i++){
-        char char = s.charAt(i)
-        Map<Character, Integer> lastArrayEle = tempArray[tempArray.length -1];
-        char lastKey = lastArrayEle ? Object.keys(lastArrayEle)[0] : null
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {string}
+ */
+ //[{a:1}]
+var removeDuplicates = function(s, k) {
+    let tempArray = [];
+    let result = "";
+    for(let i=0;i<s.length;i++){
+        let char = s.charAt(i)
+        let lastArrayEle = tempArray[tempArray.length -1];
+        let lastKey = lastArrayEle ? Object.keys(lastArrayEle)[0] : null
         if(lastKey !== char){
             tempArray.push({[char]: 1})
         }
@@ -24,5 +29,4 @@ class Solution {
         }
     })
     return result;
-    }
-}
+};
